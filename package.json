@@ -1,12 +1,23 @@
 {
   "name": "getenv2",
-  "version": "0.0.1",
+  "version": "0.1.0",
+  "repository": "git://github.com/sauramirez/getenv2",
   "description": "",
+  "keywords": [
+    "env",
+    "environment",
+    "configuration",
+    "config",
+    "12factor"
+  ],
+  "engines": {
+    "node": ">=4.0.0"
+  },
   "main": "lib/index.js",
   "scripts": {
     "test": "./node_modules/lab/bin/lab"
   },
-  "author": "",
+  "author": "Sau Ramirez",
   "license": "MIT",
   "devDependencies": {
     "code": "^3.0.2",

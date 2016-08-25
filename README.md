@@ -49,7 +49,7 @@ We also have some default coercion options that you can pass as a string
 
 ```js
 Getenv('DB_PORT', 3316, 'int');
-Getenv('DB_HOSTS', ['localhost', '127.0.0.1], 'array');
+Getenv('DB_HOSTS', ['localhost', '127.0.0.1'], 'array');
 Getenv('DB_PRIVATE', true, 'bool');
 Getenv('DB_STRING', true, 'string'); // default
 ```
