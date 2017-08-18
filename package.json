@@ -22,5 +22,8 @@
   "devDependencies": {
     "code": "^3.0.2",
     "lab": "^11.0.1"
+  },
+  "dependencies": {
+    "joi": "^10.6.0"
   }
 }

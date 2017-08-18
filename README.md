@@ -14,11 +14,10 @@ npm install getenv2
 const Getenv = require('getenv2');
 
 // get the host url using localhost as the fallback
-let dbHost = Getenv('DB_HOST', 'localhost');
+const dbHost = Getenv('DB_HOST', 'localhost');
 
 // get the db password with no fallback for production environments
-// assuming NODE_ENV is set to 'dev'
-let dbPassword = Getenv('DB_HOST', {'dev': 'localpassword'});
+const dbPassword = Getenv('DB_HOST', {'dev': 'localpassword'});
 ```
 
 ## API
@@ -34,22 +33,40 @@ Getenv.setObjectFallback('staging');
 Getenv('DB_PASSWORD', {'staging': 'stagingpass'});
 ```
 
-### Coercion
+## Validation
 
-Getenv allows you to send functions in order to parse the environment variables
+Getenv accepts joi objects to validate and parse environment variables.
 
 ```js
-Getenv('DB_HOSTS', undefined, function (v) {
-  return [v + Math.random(), v + Math.random()];
-})
+const Joi = require('joi');
+
+Getenv('CONCURRENCY', Joi.number().max(5).default(1));
+Getenv('HOST', Joi.string().uri());
+Getenv('TODAY', Joi.date().iso());
 ```
 
-We also have some default coercion options that you can pass as a string
+For more information on the datatypes Joi supports see [https://github.com/hapijs/joi/blob/v10.6.0/API.md](https://github.com/hapijs/joi/blob/v10.6.0/API.md)
 
+### Array
+
+Getenv has a custom joi instance available in order to support arrays and
+objects loaded from the environment variables.
 
 ```js
-Getenv('DB_PORT', 3316, 'int');
-Getenv('DB_HOSTS', ['localhost', '127.0.0.1'], 'array');
-Getenv('DB_PRIVATE', true, 'bool');
-Getenv('DB_STRING', true, 'string'); // default
+const Getenv = require('getenv2');
+
+// if ARRAY is set to 1,2
+Getenv('ARRAY', Getenv.joi.envarray()); // returns ['1', '2']
+Getenv('ARRAY', Getenv.joi.envarray().number().length(5)); // returns [1, 2]
+```
+
+### Object
+
+Runs JSON.parse on the variable
+
+```js
+const Getenv = require('getenv2');
+
+// if OBJECT is set to { 'test': true }
+Getenv('OBJECT', Getenv.joi.envobject()); // returns { test: true }
 ```
