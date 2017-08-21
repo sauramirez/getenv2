@@ -1,8 +1,8 @@
 {
   "name": "getenv2",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "repository": "git://github.com/sauramirez/getenv2",
-  "description": "",
+  "description": "Retrieve and validate environment variables",
   "keywords": [
     "env",
     "environment",
@@ -15,15 +15,19 @@
   },
   "main": "lib/index.js",
   "scripts": {
-    "test": "./node_modules/lab/bin/lab"
+    "test": "lab -c -a code -r console -o stdout -r lab-markdown-reporter -o doc/coverage.md --coverage-path lib -L"
   },
   "author": "Sau Ramirez",
   "license": "MIT",
   "devDependencies": {
-    "code": "^3.0.2",
-    "lab": "^11.0.1"
+    "code": "3.x.x",
+    "eslint": "4.x.x",
+    "eslint-config-hapi": "10.x.x",
+    "eslint-plugin-hapi": "4.x.x",
+    "lab": "14.x.x",
+    "lab-markdown-reporter": "1.0.x"
   },
   "dependencies": {
-    "joi": "^10.6.0"
+    "joi": "10.6.x"
   }
 }
