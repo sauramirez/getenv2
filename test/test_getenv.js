@@ -14,6 +14,7 @@ process.env.TEST_BOOL_TRUE = 'true';
 const Code = require('code');
 const Lab = require('lab');
 const Getenv = require('../lib/index');
+const Errors = require('../lib/errors');
 
 const lab = exports.lab = Lab.script();
 const expect = Code.expect;
@@ -48,7 +49,7 @@ describe('Getenv', () => {
 
             Getenv('TEST_ENV', Joi);
         };
-        expect(throws).to.throw(Error, 'No default specified');
+        expect(throws).to.throw(Errors.NoDefaultError, 'No default specified');
         done();
     });
 
@@ -71,7 +72,7 @@ describe('Getenv', () => {
 
             Getenv('TEST_ENV');
         };
-        expect(throws).to.throw(Error, 'No default specified');
+        expect(throws).to.throw(Errors.NoDefaultError, 'No default specified');
         done();
     });
 
@@ -118,7 +119,7 @@ describe('Getenv', () => {
             });
             console.log('Enf', env);
         };
-        expect(throws).to.throw(Error, 'No default specified');
+        expect(throws).to.throw(Errors.NoDefaultError, 'No default specified');
         done();
     });
 
@@ -128,7 +129,7 @@ describe('Getenv', () => {
 
             Getenv('TEST_STRING', Joi.number());
         };
-        expect(throws).to.throw(Error);
+        expect(throws).to.throw(Error, { name: 'ValidationError' });
         done();
     });
 });
