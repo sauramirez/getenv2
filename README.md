@@ -1,4 +1,5 @@
 # getenv2
+[![Build Status](https://travis-ci.org/sauramirez/getenv2.svg?branch=master)](https://travis-ci.org/sauramirez/getenv2)
 
 Node environment helper with fallbacks
 
