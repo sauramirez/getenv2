@@ -4,6 +4,7 @@ Thu Nov 15 2018 10:53:41 GMT-0600 (CST)
 ## Tests
     
 **Getenv**  
+<<<<<<< HEAD
 ✔ 1) should return the default (14 ms)  
 ✔ 2) should return boolean from the environment (2 ms)  
 ✔ 3) should return the default even with no validation (1 ms)  
@@ -17,27 +18,3 @@ Thu Nov 15 2018 10:53:41 GMT-0600 (CST)
 ✔ 11) should use default on envobject (0 ms)  
 ✔ 12) should use the fallback (1 ms)  
 ✔ 13) should fail if no fallback (1 ms)  
-✔ 14) should test validation (1 ms)  
-  
-  
-14 tests  
-0 tests failed  
-0 tests skipped  
-  
-Test duration: 37 ms  
-  
-  
-## Leaks  
-No global variable leaks detected  
-  
-  
-## Coverage  
-Threshold: 0%  
-Coverage: 98.72% (1/78)  
-  
-  
-## Linting  
-Warnings threshold: 0  
-Errors threshold: 0  
-No issues  
-  
