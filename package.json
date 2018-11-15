@@ -33,6 +33,6 @@
     "lab-markdown-reporter": "1.0.x"
   },
   "dependencies": {
-    "joi": "10.6.x"
+    "joi": "12.0.x"
   }
 }
