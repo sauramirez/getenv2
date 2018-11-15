@@ -1,7 +1,7 @@
 <a name="module_@getenv2"></a>
 
 ## @getenv2
-GembaFileStructure module.
+Getenv2 module.
 
 <a name="module_@getenv2..getenv"></a>
 

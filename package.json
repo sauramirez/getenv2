@@ -1,6 +1,6 @@
 {
   "name": "getenv2",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "repository": "git://github.com/sauramirez/getenv2",
   "description": "Retrieve and validate environment variables",
   "keywords": [
@@ -8,6 +8,8 @@
     "environment",
     "configuration",
     "config",
+    "getenv",
+    "process.env",
     "12factor"
   ],
   "engines": {
