@@ -46,7 +46,7 @@ Getenv('HOST', Joi.string().uri());
 Getenv('TODAY', Joi.date().iso());
 ```
 
-For more information on the datatypes Joi supports see [https://github.com/hapijs/joi/blob/v10.6.0/API.md](https://github.com/hapijs/joi/blob/v10.6.0/API.md)
+For more information on the datatypes Joi supports see [https://github.com/hapijs/joi/blob/v14.0.6/API.md](https://github.com/hapijs/joi/blob/v14.0.6/API.md)
 
 ### Array
 

@@ -1,6 +1,6 @@
 {
   "name": "getenv2",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "repository": "git://github.com/sauramirez/getenv2",
   "description": "Retrieve and validate environment variables",
   "keywords": [
@@ -8,6 +8,8 @@
     "environment",
     "configuration",
     "config",
+    "getenv",
+    "process.env",
     "12factor"
   ],
   "engines": {
@@ -22,17 +24,17 @@
   "author": "Sau Ramirez",
   "license": "MIT",
   "devDependencies": {
-    "code": "3.x.x",
-    "docdash": "0.4.x",
-    "eslint": "4.x.x",
-    "eslint-config-hapi": "10.x.x",
+    "code": "5.x.x",
+    "docdash": "1.x.x",
+    "eslint": "5.x.x",
+    "eslint-config-hapi": "12.x.x",
     "eslint-plugin-hapi": "4.x.x",
     "jsdoc": "3.x.x",
-    "jsdoc-to-markdown": "3.x.x",
-    "lab": "14.x.x",
+    "jsdoc-to-markdown": "4.x.x",
+    "lab": "17.x.x",
     "lab-markdown-reporter": "1.0.x"
   },
   "dependencies": {
-    "joi": "12.0.x"
+    "joi": "14.0.x"
   }
 }
