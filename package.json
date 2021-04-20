@@ -1,6 +1,6 @@
 {
   "name": "getenv2",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "repository": "git://github.com/sauramirez/getenv2",
   "description": "Retrieve and validate environment variables",
   "keywords": [
@@ -19,22 +19,22 @@
   "scripts": {
     "document": "jsdoc -c ./jsdoc.json lib",
     "document-markdown": "jsdoc2md -f 'lib/**/*.js' > doc/README.md",
-    "test": "lab -c -a code -r console -o stdout -r lab-markdown-reporter -o doc/coverage.md --coverage-path lib -L"
+    "test": "lab -c -a @hapi/code -r console -o stdout -r lab-markdown-reporter -o doc/coverage.md --coverage-path lib -L"
   },
   "author": "Sau Ramirez",
   "license": "MIT",
   "devDependencies": {
-    "code": "5.x.x",
+    "@bekindsoft/eslint-config-bekind": "^0.2.1",
+    "@hapi/code": "^8.0.3",
+    "@hapi/eslint-plugin": "^5.0.0",
+    "@hapi/lab": "^24.1.1",
     "docdash": "1.x.x",
-    "eslint": "5.x.x",
-    "eslint-config-hapi": "12.x.x",
-    "eslint-plugin-hapi": "4.x.x",
+    "eslint": "7.x.x",
     "jsdoc": "3.x.x",
-    "jsdoc-to-markdown": "4.x.x",
-    "lab": "17.x.x",
+    "jsdoc-to-markdown": "7.x.x",
     "lab-markdown-reporter": "1.0.x"
   },
   "dependencies": {
-    "joi": "14.0.x"
+    "joi": "17.x.x"
   }
 }

@@ -1,7 +1,0 @@
-{
-    "extends": "eslint-config-hapi",
-    "env": {
-        "node": true
-    }
-}
-
