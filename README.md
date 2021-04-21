@@ -27,11 +27,12 @@ const dbPassword = Getenv('DB_HOST', {'dev': 'localpassword'});
 
 Sets the key to be used as a fallback when sending a dictionary
 
-`default = process.env.NODE_ENV`
+`default = process.env.ENVIRONMENT || 'dev'`
 
 ```js
 Getenv.setObjectFallback('staging');
-Getenv('DB_PASSWORD', {'staging': 'stagingpass'});
+Getenv('DB_PASSWORD', { dev: 'developmentpass' });
+// -> 'developmentpass'
 ```
 
 ## Validation
@@ -57,8 +58,10 @@ objects loaded from the environment variables.
 const Getenv = require('getenv2');
 
 // if ARRAY is set to 1,2
-Getenv('ARRAY', Getenv.joi.envarray()); // returns ['1', '2']
-Getenv('ARRAY', Getenv.joi.envarray().number().length(5)); // returns [1, 2]
+Getenv('ARRAY', Getenv.joi.envarray());
+// -> ['1', '2']
+Getenv('ARRAY', Getenv.joi.envarray().number().length(5));
+// -> [1, 2]
 ```
 
 ### Object
@@ -69,5 +72,6 @@ Runs JSON.parse on the variable
 const Getenv = require('getenv2');
 
 // if OBJECT is set to { 'test': true }
-Getenv('OBJECT', Getenv.joi.envobject()); // returns { test: true }
+Getenv('OBJECT', Getenv.joi.envobject());
+// -> { test: true }
 ```

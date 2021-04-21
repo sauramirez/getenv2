@@ -11,8 +11,8 @@ process.env.TEST_OBJECT = '{"test": true}';
 process.env.TEST_BOOL = 'false';
 process.env.TEST_BOOL_TRUE = 'true';
 
-const Code = require('code');
-const Lab = require('lab');
+const Code = require('@hapi/code');
+const Lab = require('@hapi/lab');
 const Getenv = require('../lib/index');
 const Errors = require('../lib/errors');
 
@@ -24,101 +24,100 @@ const it = lab.it;
 
 describe('Getenv', () => {
 
-    it('should return the default', () => {
+  it('should return the default', () => {
 
-        expect(Getenv('TEST_ENV', Joi.number().default(1))).to.equal(1);
-    });
+    expect(Getenv('TEST_ENV', Joi.number().default(1))).to.equal(1);
+  });
 
-    it('should return boolean from the environment', () => {
+  it('should return boolean from the environment', () => {
 
-        expect(Getenv('TEST_BOOL_TRUE', Joi.boolean())).to.be.true();
-    });
+    expect(Getenv('TEST_BOOL_TRUE', Joi.boolean())).to.be.true();
+  });
 
 
-    it('should return the default even with no validation', () => {
+  it('should return the default even with no validation', () => {
 
-        expect(Getenv('TEST_ENV', Joi, 'test')).to.equal('test');
-    });
+    expect(Getenv('TEST_ENV', Joi.any(), 'test')).to.equal('test');
+  });
 
-    it('should throw if no value undefined', () => {
+  it('should throw if no value undefined', () => {
 
-        const throws = () => {
+    const throws = () => {
 
-            Getenv('TEST_ENV', Joi);
-        };
+      Getenv('TEST_ENV', Joi);
+    };
 
-        expect(throws).to.throw(Errors.NoDefaultError, 'No default specified');
-    });
+    expect(throws).to.throw(Errors.NoDefaultError, 'No default specified');
+  });
 
-    it('should use the default with no validation', () => {
+  it('should use the default with no validation', () => {
 
-        expect(Getenv('TEST_ENV', 'hi')).to.equal('hi');
-    });
+    expect(Getenv('TEST_ENV', 'hi')).to.equal('hi');
+  });
 
-    it('should use the default fallback with no validation', () => {
+  it('should use the default fallback with no validation', () => {
 
-        expect(Getenv('TEST_ENV', { dev: 'hi2' })).to.equal('hi2');
-    });
+    expect(Getenv('TEST_ENV', { dev: 'hi2' })).to.equal('hi2');
+  });
 
-    it('should throw if no validation and no default', () => {
+  it('should throw if no validation and no default', () => {
 
-        const throws = () => {
+    const throws = () => {
 
-            Getenv('TEST_ENV');
-        };
+      Getenv('TEST_ENV');
+    };
 
-        expect(throws).to.throw(Errors.NoDefaultError, 'No default specified');
-    });
+    expect(throws).to.throw(Errors.NoDefaultError, 'No default specified');
+  });
 
-    it('should parse array from environment', () => {
+  it('should parse array from environment', () => {
 
-        expect(Getenv('TEST_ARRAY', Getenv.joi.envarray().items(Joi.number()))).to.equal([1,11,111]);
-    });
+    expect(Getenv('TEST_ARRAY', Getenv.joi.envarray().items(Joi.number()))).to.equal([1,11,111]);
+  });
 
-    it('should default on envarray', () => {
+  it('should default on envarray', () => {
 
-        expect(Getenv('TEST_ENV', Getenv.joi.envarray().default([1,12]))).to.equal([1,12]);
-    });
+    expect(Getenv('TEST_ENV', Getenv.joi.envarray().default([1,12]))).to.equal([1,12]);
+  });
 
-    it('should parse object from environment', () => {
+  it('should parse object from environment', () => {
 
-        expect(Getenv('TEST_OBJECT', Getenv.joi.envobject()).test).to.be.true();
-    });
+    expect(Getenv('TEST_OBJECT', Getenv.joi.envobject()).test).to.be.true();
+  });
 
-    it('should use default on envobject', () => {
+  it('should use default on envobject', () => {
 
-        expect(Getenv('TEST_ENV', Getenv.joi.envobject().default({ testDefault: true })).testDefault).to.be.true();
-    });
+    expect(Getenv('TEST_ENV', Getenv.joi.envobject().default({ testDefault: true })).testDefault).to.be.true();
+  });
 
-    it('should use the fallback', () => {
+  it('should use the fallback', () => {
 
-        Getenv.setObjectFallback('prod');
-        expect(Getenv('TEST_ENV', Joi.number(), {
-            prod: 4
-        })).to.equal(4);
-    });
+    Getenv.setObjectFallback('prod');
+    expect(Getenv('TEST_ENV', Joi.number(), {
+      prod: 4
+    })).to.equal(4);
+  });
 
-    it('should fail if no fallback', () => {
+  it('should fail if no fallback', () => {
 
-        Getenv.setObjectFallback('prod');
-        const throws = () => {
+    Getenv.setObjectFallback('prod');
+    const throws = () => {
 
-            const env = Getenv('TEST_ENV', Joi.number(), {
-                staging: 4
-            });
-            console.log('Enf', env);
-        };
+      Getenv('TEST_ENV', Joi.number(), {
+        staging: 4
+      });
+    };
 
-        expect(throws).to.throw(Errors.NoDefaultError, 'No default specified');
-    });
+    expect(throws).to.throw(Errors.NoDefaultError, 'No default specified');
+  });
 
-    it('should test validation', () => {
+  it('should test validation', () => {
 
-        const throws = () => {
+    const throws = () => {
 
-            Getenv('TEST_STRING', Joi.number());
-        };
+      Getenv('TEST_STRING', Joi.number());
+    };
 
-        expect(throws).to.throw(Error, { name: 'ValidationError' });
-    });
+    expect(throws).to.throw(Error, { name: 'ValidationError' });
+  });
 });
